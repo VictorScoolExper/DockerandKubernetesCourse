@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    build: 
+      # context must call its self, since it is in the same folder
+      context: .
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "3000:3000"
+    # specify volumnes
+    volumes:
+      - /app/node_modules
+      - .:/app

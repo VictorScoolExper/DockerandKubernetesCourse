@@ -1,0 +1,18 @@
+# docker compose version
+version: '3'
+
+# tell the container what to do
+# service defines the service we will have
+services: 
+  redis-server:
+    # define the image the container will use 
+    image: 'redis'
+  node-app:
+    # line below if container crashes it will always restart
+    restart: always
+    # this will look in the current dir to build image.
+    build: .
+    # we will define ports
+    ports:
+      # first num is the port on local machine, sec is the container
+      - "4001:8081"

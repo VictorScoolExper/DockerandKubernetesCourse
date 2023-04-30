@@ -14,7 +14,7 @@ client.set('visits', 0);
 
 app.get('/',(req, res)=>{
     // next line is an exit status code to force error
-    process.exit(0);
+    // process.exit(0);
     // connects redis server to get the number of visists
     client.get('visits', (err, visits)=>{
         res.send('Number of visits is '+ visits);

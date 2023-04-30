@@ -9,10 +9,12 @@ services:
     image: 'redis'
   node-app:
     # line below if container crashes it will always restart
+    #  checkout restart policies
     restart: always
     # this will look in the current dir to build image.
     build: .
     # we will define ports
     ports:
       # first num is the port on local machine, sec is the container
+      # the "-" is an array in a yaml file
       - "4001:8081"

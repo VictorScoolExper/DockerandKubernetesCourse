@@ -8,6 +8,9 @@ RUN npm run build
 
 # run phase steps
 FROM nginx
+# We expose the port to be able to use with beanstalk,
+# beanstalk will look for this instruction to be used as port
+EXPOSE 80
 # Checkout nginx docker to see the documentation for the code below
 # We copy /app/build from builder (above FROM).
 # then we tell it where we want it saved in our container

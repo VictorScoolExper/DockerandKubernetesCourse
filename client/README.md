@@ -1,7 +1,6 @@
-# Complex (Redis, Postgre, NodeJS, React, Express)
+# Getting Started with Create React App
 
-This project will be a multicontainer app that is make with various tech to simulate
- what real apps will look like in production
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 

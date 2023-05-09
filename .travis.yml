@@ -10,3 +10,19 @@ before_install:
 script:
   # the "-e CI=true" runs the test so we actually get a response
   - docker run -e CI=true victorscool/docker-course-section7 npm run test
+
+deploy:
+  # travis lets you connect easy to a handful of providers
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "Docker-react-env"
+  bucket_name: "elasticbeanstalk-us-east-2-555488064140"
+  bucket_path: "docker-react"
+  # when ever new code gets pushed look for section7
+  on:
+    branch: section7
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "AWS_SECRET_KEY"
+
+  # Docker-react-env.eba-93iyrzaf.us-east-2.elasticbeanstalk.com

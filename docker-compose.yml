@@ -1,25 +1,8 @@
 version: '3'
 services:
-  web: 
-    build: 
-      # context points to the directory where our files are located
+  web:
+    build:
       context: .
-      # docerfile contains the location of the docker file
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000"
-    volumes: 
-      # the following lines means "do not map a folder up against node_modules" inside the container
-      - /app/node_modules
-      # "." indicates current working directory maps to the folder inside of the container
-      - .:/app
-  # This can be commented if "docker exec -it nameOfContainer npm run test"
-  tests:
-    build: 
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes: 
-      - /app/node_modules
-      - .:/app
-    # override starting cmd in docker file
-    command: ["npm", "run", "test"]
+      - '80:80'

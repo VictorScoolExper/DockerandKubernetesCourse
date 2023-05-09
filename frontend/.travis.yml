@@ -1,0 +1,12 @@
+# sudo means the kind of permissions
+sudo: required
+# what it will install
+services: 
+  - docker
+
+before_install:
+  - docker build -t victorscool/docker-course-section7 -f Dockerfile.dev .
+# Here we will have all the cmds that we need for the test suite
+script:
+  # the "-e CI=true" runs the test so we actually get a response
+  - docker run -e CI=true victorscool/docker-course-section7 npm run test

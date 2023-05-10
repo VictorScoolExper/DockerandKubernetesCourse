@@ -5,7 +5,7 @@ services:
   - docker
 
 before install:
-  - docker build -t victorscool/react-test -f ./client/Dockerfile.dev
+  - docker build -t victorscool/react-test -f ./client/Dockerfile.dev .
   # You can add other projects to run test
 
 script:

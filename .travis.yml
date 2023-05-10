@@ -12,7 +12,7 @@ script:
   - docker run -e CI=true victorscool/react-test npm test
 
 after_success: 
-  - docker build -t victorscool/multi-client -f ./client
+  - docker build -t victorscool/multi-client ./client
   - docker build -t victorscool/multi-nginx ./nginx
   - docker build -t victorscool/multi-server ./server
   - docker build -t victorscool/multi-worker ./worker

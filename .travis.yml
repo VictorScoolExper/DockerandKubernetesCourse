@@ -1,0 +1,25 @@
+language: generic 
+
+sudo: required
+services:
+  - docker
+
+before install:
+  - docker build -t victorscool/react-test -f ./client/Dockerfile.dev
+  # You can add other projects to run test
+
+script:
+  - docker run -e CI=true victorscool/react-test npm test
+
+after_success: 
+  - docker build -t victorscool/multi-client -f ./client
+  - docker build -t victorscool/multi-nginx ./nginx
+  - docker build -t victorscool/multi-server ./server
+  - docker build -t victorscool/multi-worker ./worker
+  # Login to the docker cli, we do the entire login step in one try
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push victorscool/multi-client
+  - docker push victorscool/multi-nginx
+  - docker push victorscool/multi-server
+  - docker push victorscool/multi-worker

@@ -2,10 +2,12 @@ version: "3"
 services:
   client:
     image: "victorscool/multi-client"
+    # Investigate how much memory to allocate
     mem_limit: 128m
     hostname: client
   server:
     image: "victorscool/multi-server"
+    # Investigate how much memory to allocate
     mem_limit: 128m
     hostname: api
     environment:
@@ -18,6 +20,7 @@ services:
       - PGPORT=$PGPORT
   worker:
     image: "victorscool/multi-worker"
+    # Investigate how much memory to allocate
     mem_limit: 128m
     hostname: worker
     environment:
@@ -25,6 +28,7 @@ services:
       - REDIS_PORT=$REDIS_PORT
   nginx:
     image: "victorscool/multi-nginx"
+    # Investigate how much memory to allocate
     mem_limit: 128m
     hostname: nginx
     ports:

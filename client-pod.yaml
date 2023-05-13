@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: client-pod
+  labels: 
+    component: web
+spec:
+  containers:
+  # we can use the name for networking purposes.
+    - name: client
+    # image comes from docker hub
+      image: stephengrider/multi-client
+      # The port we will export 
+      ports:
+        - containerPort: 3000

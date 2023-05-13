@@ -1,4 +1,0 @@
-FROM nginx
-# the next line use the default.conf to override the one in th docker container
-COPY ./default.conf /etc/nginx/conf.d/
-

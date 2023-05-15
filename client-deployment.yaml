@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  # replicas tells us the amount of pods that we want running in the template 
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  # the template is the configuration that the every single pod will use 
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: stephengrider/multi-client
+          ports: 
+            - containerPort: 3000

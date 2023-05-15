@@ -9,7 +9,9 @@ spec:
   # we can use the name for networking purposes.
     - name: client
     # image comes from docker hub
-      image: stephengrider/multi-client
+      image: stephengrider/multi-worker
       # The port we will export 
       ports:
         - containerPort: 3000
+
+

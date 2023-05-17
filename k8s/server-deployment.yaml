@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels: 
+      # Note that "component" can be a different name for the key and "server" can also be another value 
+      component: server
+  template: 
+    metadata:
+      labels:
+        # these labels must be the same as spec
+        component: server
+    spec:
+      containers:
+        - name: server
+          image: stephengrider/multi-server
+          ports:
+            - containerPort: 5000 
+  

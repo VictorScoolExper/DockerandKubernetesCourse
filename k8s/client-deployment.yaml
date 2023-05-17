@@ -3,12 +3,10 @@ kind: Deployment
 metadata:
   name: client-deployment
 spec:
-  # replicas tells us the amount of pods that we want running in the template 
-  replicas: 1
-  selector:
+  replicas: 3
+  selector: 
     matchLabels:
       component: web
-  # the template is the configuration that the every single pod will use 
   template:
     metadata:
       labels:
@@ -17,5 +15,5 @@ spec:
       containers:
         - name: client
           image: stephengrider/multi-client
-          ports: 
+          ports:
             - containerPort: 3000

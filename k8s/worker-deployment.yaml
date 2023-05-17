@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: worker
+  template:
+    metadata:
+      labels:
+        component: worker
+    spec: 
+      containers:
+        - name: worker
+          image: stephengrider/multi-worker
+        # We do not need ports here because we have no other dependencies such as pods 
+        # and need no service becuase it will not get accessed
